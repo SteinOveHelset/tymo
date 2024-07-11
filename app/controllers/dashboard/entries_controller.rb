@@ -2,11 +2,9 @@ module Dashboard
   class EntriesController < ApplicationController
     layout "dashboard"
 
-    # Set active team or redirect to teams page
-    before_action :set_active_team
-
-    # Check if user is authenticated
+    # Check if user is authenticated - and set active team
     before_action :check_authenticated
+    before_action :set_active_team
 
     # Get projects from db for use in forms
     before_action :set_projects, only: [:new, :create, :edit, :update]

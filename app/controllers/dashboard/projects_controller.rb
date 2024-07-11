@@ -2,9 +2,8 @@ module Dashboard
   class ProjectsController < ApplicationController
     layout "dashboard"
 
-    # Check if user is authenticated
+    # Check if user is authenticated - and set active team
     before_action :check_authenticated
-
     before_action :set_active_team
     before_action :set_clients, only: [:new, :create, :edit, :update]
     

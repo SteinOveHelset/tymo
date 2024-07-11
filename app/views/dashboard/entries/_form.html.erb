@@ -2,7 +2,7 @@
     <%= form.label :project %>
     <%= form.collection_select :project_id, @projects, :id, :title_plus_client, { prompt: 'Select a project' }, { class: 'py-4 px-6 rounded-2xl' } %>
     <% @entry.errors.full_messages_for(:project).each do |message| %>
-        <div class="px-6 py-4 mt-2 rounded-2xl bg-rose-300"><%= message %></div>
+        <div class="px-6 py-4 mt-2 rounded-2xl bg-[#e45c34]"><%= message %></div>
     <% end %>
 </div>
 
@@ -10,7 +10,7 @@
     <%= form.label :description %>
     <%= form.text_area :description, class: "w-full min-h-80 py-4 px-6 rounded-2xl" %>
     <% @entry.errors.full_messages_for(:description).each do |message| %>
-        <div class="px-6 py-4 mt-2 rounded-2xl bg-rose-300"><%= message %></div>
+        <div class="px-6 py-4 mt-2 rounded-2xl bg-[#e45c34]"><%= message %></div>
     <% end %>
 </div>
 
@@ -18,7 +18,7 @@
     <p><%= form.label :start_time, "Start Time" %></p>
     <%= form.datetime_select :start_time %>
     <% @entry.errors.full_messages_for(:start_time).each do |message| %>
-        <div class="px-6 py-4 mt-2 rounded-2xl bg-rose-300"><%= message %></div>
+        <div class="px-6 py-4 mt-2 rounded-2xl bg-[#e45c34]"><%= message %></div>
     <% end %>
 </div>
 
@@ -26,7 +26,7 @@
     <p><%= form.label :end_time, "End Time" %></p>
     <%= form.datetime_select :end_time %>
     <% @entry.errors.full_messages_for(:end_time).each do |message| %>
-        <div class="px-6 py-4 mt-2 rounded-2xl bg-rose-300"><%= message %></div>
+        <div class="px-6 py-4 mt-2 rounded-2xl bg-[#e45c34]"><%= message %></div>
     <% end %>
 </div>
 

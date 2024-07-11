@@ -16,7 +16,7 @@
   <body>
     <% flash.each do |type, msg| %>
       <div 
-        class="w-full max-w-md p-6 rounded-2xl fixed bottom-4 right-4 transition-all <% if type == 'notice' %>bg-emerald-400<% else %>bg-rose-600<% end %>"
+        class="w-full max-w-md p-6 rounded-2xl fixed bottom-4 right-4 transition-all <% if type == 'notice' %>bg-[#5e7857]<% else %>bg-[#e45c34]<% end %>"
       >
         <%= msg %>
       </div>
@@ -31,7 +31,7 @@
 
         <%= link_to "track time", new_dashboard_entry_path, class: "mt-6 px-6 py-4 inline-block bg-[#1a466a] hover:bg-[#0e3352] transition text-white rounded-2xl" %>
 
-        <%= link_to "entries", dashboard_entries_path, class: "mt-8 text-white #{'font-bold' if request.path.start_with?('/dashboard/entries')}" %>
+        <%= link_to "my entries", dashboard_entries_path, class: "mt-8 text-white #{'font-bold' if request.path.start_with?('/dashboard/entries')}" %>
         <%= link_to "clients", dashboard_clients_path, class: "mt-8 text-white #{'font-bold' if request.path.start_with?('/dashboard/clients')} #{'font-bold' if request.path.start_with?('/dashboard/projects')}" %>
         <%= link_to "teams", dashboard_teams_path, class: "mt-8 text-white #{'font-bold' if request.path.start_with?('/dashboard/teams')}" %>
 

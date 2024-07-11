@@ -2,7 +2,7 @@
   <h1 class="mb-6 text-5xl text-white font-bold">Log in</h1>
 
   <% if @user.errors.any? %>
-    <div class="p-6 bg-rose-300 rounded-2xl">
+    <div class="p-6 bg-[#e45c34] rounded-2xl">
       <ul>
         <% @user.errors.full_messages.each do |message| %>
           <li><%= message %></li>

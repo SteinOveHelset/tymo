@@ -2,10 +2,8 @@ module Dashboard
   class UsersController < ApplicationController
     layout "dashboard"
 
-    # Check if user is authenticated
+    # Check if user is authenticated - and set active team
     before_action :check_authenticated
-
-    # Set active team and check if user is authenticated
     before_action :set_active_team
 
     def show

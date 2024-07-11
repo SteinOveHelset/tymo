@@ -2,10 +2,9 @@ module Dashboard
   class ClientsController < ApplicationController
     layout "dashboard"
 
-    before_action :set_active_team
-
-    # Check if user is authenticated
+    # Check if user is authenticated - and set active team
     before_action :check_authenticated
+    before_action :set_active_team
     
     def index
       @clients = @active_team.clients.includes(:projects)
