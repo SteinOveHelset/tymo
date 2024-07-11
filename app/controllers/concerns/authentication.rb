@@ -19,6 +19,11 @@ module Authentication
 
     def set_active_team
         @active_team = current_user.teams.find_by(id: session[:active_team_id])
+
+        if current_user.teams.size == 1
+            @active_team = current_user.teams.first
+            session[:active_team_id] = @active_team.id
+        end
         
         unless @active_team
             redirect_to dashboard_teams_path, alert: "Please select a team."

@@ -90,11 +90,7 @@
 
                 <div>
                     <div class="py-4 text-center bg-white rounded-b-2xl">
-                        <% if team.id == @active_team.id %>
-                            Active team
-                        <% else %>
-                            <%= link_to "Activate", dashboard_set_active_team_path(team_id: team.id) %>
-                        <% end %>
+                        <%= link_to "Activate", dashboard_set_active_team_path(team_id: team.id) %>
                     </div>
                 </div>
             </div>

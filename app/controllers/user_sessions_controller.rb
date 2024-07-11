@@ -10,7 +10,7 @@ class UserSessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to dashboard_path
     else
-      redirect_to new_user_session_path, alert: "Login failed"
+      redirect_to new_user_session_path, alert: "Wrong e-mail or password"
     end
   end
 end

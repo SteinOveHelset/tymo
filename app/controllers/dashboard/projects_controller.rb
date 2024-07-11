@@ -44,9 +44,10 @@ module Dashboard
 
     def destroy
       @project = @active_team.projects.find(params[:id])
+      client = @project.client
       @project.destroy
 
-      redirect_to dashboard_projects_path, status: :see_other, notice: "Project successfully deleted"
+      redirect_to dashboard_client_path(client), status: :see_other, notice: "Project successfully deleted"
     end
 
     private
