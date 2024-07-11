@@ -35,7 +35,7 @@
     </div>
 
     <div class="w-full p-6 bg-white rounded-2xl text-center">
-        <p class="mb-4 text-2xl font-bold"><%= @entry.created_by.email %></p>
+        <p class="mb-4 text-2xl font-bold"><%= @entry.created_by.email.split('@').first %></p>
         <p class="text-xs">Tracked by</p>
     </div>
 

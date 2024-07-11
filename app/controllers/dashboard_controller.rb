@@ -1,5 +1,8 @@
 class DashboardController < ApplicationController
   layout "dashboard"
+
+  # Check if user is authenticated - and set active team
+  before_action :check_authenticated
   before_action :set_active_team
 
   def index

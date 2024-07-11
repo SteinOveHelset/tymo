@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  layout "empty"
+
   def new
     @user = User.new
   end
@@ -7,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to new_user_session, notice: "User created successfully. Please log in."
+      redirect_to new_user_session_path, notice: "User created successfully. Please log in."
     else
       render :new, status: :unprocessable_entity, alert: "User not created"
     end

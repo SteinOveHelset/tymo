@@ -34,6 +34,12 @@ body {
     font-family: "DejaVuSans";
 }
 
+body.empty {
+    background: url(/assets/auth_bg.jpg) no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .font-bold {
     font-family: "DejaVuSansBold";
 }

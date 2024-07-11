@@ -1,32 +1,37 @@
-<div class="mt-20 py-20 px-20 text-center rounded-[30px] bg-[#12567c]">
-  <h1 class="mb-6 text-5xl text-white font-bold">Sign up</h1>
+<div class="h-screen flex flex-row items-center justify-center">
+  <div class="flex flex-col items-center">
+    <%= image_tag("logo.png", width: '80') %>
 
-  <% if @user.errors.any? %>
-    <div class="p-6 bg-[#e45c34] rounded-2xl">
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <div class="mt-8 p-6 text-center rounded-2xl bg-white">
+      <h1 class="mb-6 text-2xl font-bold text-slate-800">Sign up</h1>
 
-  <%= form_with model: @user, class: "space-y-4 text-white" do |form| %>
-    <div class="flex flex-col items-center">
-      <%= form.label :email %>
-      <%= form.text_field :email, class: "w-[300px] mt-2 py-4 px-6 rounded-2xl text-slate-800" %>
+      <% if @user.errors.any? %>
+        <div class="p-6 bg-[#e45c34] rounded-2xl">
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= form_with model: @user, class: "space-y-4 text-white" do |form| %>
+        <div class="flex flex-col items-center">
+          <%= form.label :email, class: "text-slate-800" %>
+          <%= form.text_field :email, class: "w-[300px] mt-2 py-4 px-6 rounded-2xl bg-slate-100 text-slate-800" %>
+        </div>
+        <div class="flex flex-col items-center">
+          <%= form.label :password, class: "text-slate-800" %>
+          <%= form.password_field :password, class: "w-[300px] mt-2 py-4 px-6 rounded-2xl bg-slate-100 text-slate-800" %>
+        </div>
+        <div class="flex flex-col items-center">
+          <%= form.label :password_confirmation, class: "text-slate-800" %>
+          <%= form.password_field :password_confirmation, class: "w-[300px] mt-2 py-4 px-6 rounded-2xl bg-slate-100 text-slate-800" %>
+        </div>
+        <div>
+          <%= form.submit 'Submit', class: "py-4 px-6 bg-[#5e8c75] hover:bg-[#3c5e4d] transition text-white rounded-2xl cursor-pointer" %>
+        </div>
+      <% end %>
     </div>
-    <div class="flex flex-col items-center">
-      <%= form.label :password %>
-      <%= form.password_field :password, class: "w-[300px] mt-2 py-4 px-6 rounded-2xl text-slate-800" %>
-    </div>
-    <div class="flex flex-col items-center">
-      <%= form.label :password_confirmation %>
-      <%= form.password_field :password_confirmation, class: "w-[300px] mt-2 py-4 px-6 rounded-2xl text-slate-800" %>
-    </div>
-    <div>
-      <%= form.submit 'Submit', class: "py-4 px-6 bg-[#5e8c75] hover:bg-[#3c5e4d] transition text-white rounded-2xl cursor-pointer" %>
-    </div>
-  <% end %>
+  </div>
 </div>
-
