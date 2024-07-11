@@ -58,44 +58,50 @@
 
 <h3 class="mb-5 text-xl">My teams</h3>
 
-<% if not @active_team %>
-    <p class="mb-5 text-sm">Click on a team to activate it</p>
-<% end %>
+<% if @teams.any? %>
+    <% if not @active_team %>
+        <p class="mb-5 text-sm">Click on a team to activate it</p>
+    <% end %>
 
-<div class="grid grid-cols-3 gap-6">
-    <% @teams.each do |team| %>
-        <div>
-            <div class="mb-1.5 p-6 bg-white rounded-tl-2xl rounded-tr-2xl">
-                <div class="flex flex-row items-center justify-between">
-                    <h2 class="mb-6 text-xl font-bold"><%= team.title %></h2>
-                
-                    <div class="-mt-5 flex flex-row items-center justify-between space-x-1">
-                        <% team.members.each do |member| %>
-                            <a href="<%= dashboard_user_path(member) %>">
-                                <% if member.avatar.attached? %>
-                                    <img src="<%= url_for(member.avatar) %>" class="w-10 h-10 rounded-full">
-                                <% else %>
-                                    <div class="w-10 h-10 rounded-full bg-slate-500 flex items-center justify-center text-white">
-                                        <span class="text-xl"><%= member.email[0] %></span>
-                                    </div>
-                                <% end %>
-                            </a>
+    <div class="grid grid-cols-3 gap-6">
+        <% @teams.each do |team| %>
+            <div>
+                <div class="mb-1.5 p-6 bg-white rounded-tl-2xl rounded-tr-2xl">
+                    <div class="flex flex-row items-center justify-between">
+                        <h2 class="mb-6 text-xl font-bold"><%= team.title %></h2>
+                    
+                        <div class="-mt-5 flex flex-row items-center justify-between space-x-1">
+                            <% team.members.each do |member| %>
+                                <a href="<%= dashboard_user_path(member) %>">
+                                    <% if member.avatar.attached? %>
+                                        <img src="<%= url_for(member.avatar) %>" class="w-10 h-10 rounded-full">
+                                    <% else %>
+                                        <div class="w-10 h-10 rounded-full bg-slate-500 flex items-center justify-center text-white">
+                                            <span class="text-xl"><%= member.email[0] %></span>
+                                        </div>
+                                    <% end %>
+                                </a>
+                            <% end %>
+                        </div>
+                    </div>
+
+                    <p class="font-bold"><%= team.members.size %> <%= 'member'.pluralize(team.members.size) %></p>
+                </div>
+
+                <div>
+                    <div class="py-4 text-center bg-white rounded-b-2xl">
+                        <% if team.id == @active_team.id %>
+                            Active team
+                        <% else %>
+                            <%= link_to "Activate", dashboard_set_active_team_path(team_id: team.id) %>
                         <% end %>
                     </div>
                 </div>
-
-                <p class="font-bold"><%= team.members.size %> <%= 'member'.pluralize(team.members.size) %></p>
             </div>
+        <% end %>
+    </div>
+<% else %>
+    <p class="mb-5 text-sm">You are not a member of a team yet.</p>
 
-            <div>
-                <div class="py-4 text-center bg-white rounded-b-2xl">
-                    <% if team.id == @active_team.id %>
-                        Active team
-                    <% else %>
-                        <%= link_to "Activate", dashboard_set_active_team_path(team_id: team.id) %>
-                    <% end %>
-                </div>
-            </div>
-        </div>
-    <% end %>
-</div>
+    <%= link_to "Create a team", new_dashboard_team_path, class: "mb-4 py-4 px-6 inline-block bg-[#5e8c75] hover:bg-[#3c5e4d] transition text-white rounded-2xl" %>
+<% end %>

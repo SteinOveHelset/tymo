@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to dashboard_path
     else
       redirect_to new_user_session_path, alert: "Login failed"
     end
