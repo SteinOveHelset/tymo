@@ -1,0 +1,57 @@
+<div class="mb-6 flex justify-between items-center">
+    <h1 class="text-3xl text-[#989898]">Entries</h1>
+
+    <%= link_to "Track time +", new_dashboard_entry_path, class: "mb-4 py-4 px-6 inline-block bg-[#5e8c75] hover:bg-[#3c5e4d] transition text-white rounded-2xl" %>
+</div>
+
+<h2 class="mb-4 font-bold">today</h2>
+
+<div class="space-y-4">
+    <% if @todays_entries.any? %>
+        <%= render partial: "entry", collection: @todays_entries %>
+
+        <div class="grid grid-cols-5 gap-2">
+            <div class="col-span-4"></div>
+
+            <div class="col-span-1 py-4 px-6 bg-white rounded-2xl text-center">
+                <strong><%= formatted_minutes(@todays_minutes) %></strong><br>
+                <span class="text-xs">Total</span>
+            </div>
+        </div>
+    <% else %>
+        <p>No entries found.</p>
+    <% end %>
+</div>
+
+<h2 class="mt-8 mb-4 font-bold">all entries</h2>
+
+<div class="space-y-4">
+    <% if @entries.any? %>
+        <%= render partial: "entry", collection: @entries %>
+
+        <div class="grid grid-cols-5 gap-2">
+            <div class="col-span-4"></div>
+
+            <div class="col-span-1 py-4 px-6 bg-white rounded-2xl text-center">
+                <strong><%= formatted_minutes(@minutes) %></strong><br>
+                <span class="text-xs">Total</span>
+            </div>
+        </div>
+
+        <div class="py-12 flex justify-center gap-6">
+            <% if @page > 1 %>
+                <%= link_to "Previous", dashboard_entries_path(page: @page - 1) %>
+            <% else %>
+                <span class="opacity-40">Previous</span>
+            <% end %>
+            
+            <% if @entries.size == @per_page %>
+                <%= link_to "Next", dashboard_entries_path(page: @page + 1) %>
+            <% else %>
+                <span class="opacity-40">Next</span>
+            <% end %>
+        </div>
+    <% else %>
+        <p>No entries found.</p>
+    <% end %>
+</div>

@@ -1,0 +1,29 @@
+<div class="mb-6 flex justify-between items-center">
+    <h1 class="text-3xl text-[#989898]">Clients</h1>
+
+    <%= link_to "New client +", new_dashboard_client_path, class: "mb-4 py-4 px-6 inline-block bg-[#5e8c75] hover:bg-[#3c5e4d] transition text-white rounded-2xl" %>
+</div>
+
+<div class="grid grid-cols-3 gap-6">
+    <% @clients.each do |client| %>
+        <div>
+            <div class="mb-1.5 p-6 bg-white rounded-tl-2xl rounded-tr-2xl">
+                <h2 class="mb-6 text-xl font-bold"><%= link_to client.title, dashboard_client_path(client) %></h2>
+
+                <% if client.projects.any? %>
+                    <div class="mb-4 space-y-5">
+                        <%= render partial: "project_pills_list", collection: client.projects, as: :project %>
+                    </div>
+                <% else %>
+                    <p class="font-bold">No projects yet...</p>
+                <% end %>
+            </div>
+
+            <div class="grid grid-cols-2 gap-1.5">
+                <%= link_to "Add project", new_dashboard_project_path(client_id: client.id), class: "py-4 inline-block text-center bg-white hover:bg-slate-50 transition rounded-bl-2xl" %>
+
+                <%= link_to "Edit client", edit_dashboard_client_path(client), class: "py-4 inline-block text-center bg-white hover:bg-slate-50 transition rounded-br-2xl" %>
+            </div>
+        </div>
+    <% end %>
+</div>

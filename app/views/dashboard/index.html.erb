@@ -1,0 +1,37 @@
+<h2 class="mt-7 mb-4 font-bold">today</h2>
+
+<div class="space-y-4">
+    <% if @todays_entries.any? %>
+        <%= render partial: "dashboard/entries/entry", collection: @todays_entries %>
+
+        <div class="grid grid-cols-5 gap-2">
+            <div class="col-span-4"></div>
+
+            <div class="col-span-1 py-4 px-6 bg-white rounded-2xl text-center">
+                <strong><%= formatted_minutes(@todays_minutes) %></strong><br>
+                <span class="text-xs">Total</span>
+            </div>
+        </div>
+    <% else %>
+        <p>No entries found.</p>
+    <% end %>
+</div>
+
+<h2 class="mt-8 mb-4 font-bold">this week</h2>
+
+<div class="space-y-4">
+    <% if @thisweeks_entries.any? %>
+        <%= render partial: "dashboard/entries/entry", collection: @thisweeks_entries %>
+
+        <div class="grid grid-cols-5 gap-2">
+            <div class="col-span-4"></div>
+
+            <div class="col-span-1 py-4 px-6 bg-white rounded-2xl text-center">
+                <strong><%= formatted_minutes(@thisweeks_minutes) %></strong><br>
+                <span class="text-xs">Total</span>
+            </div>
+        </div>
+    <% else %>
+        <p>No entries found.</p>
+    <% end %>
+</div>

@@ -1,0 +1,24 @@
+<h1 class="mb-6 text-3xl text-[#989898]">Edit user</h1>
+
+<%= form_with model: @user, url: dashboard_user_path(@user), class: "space-y-4" do |form| %>
+  <div class="flex flex-col">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "w-[300px] mt-2 py-4 px-6 rounded-2xl text-slate-800" %>
+    <% @user.errors.full_messages_for(:email).each do |message| %>
+        <div class="px-6 py-4 mt-2 rounded-2xl bg-rose-300"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="flex flex-col">
+      <%= form.label "Avatar" %>
+      <%= form.file_field :avatar, class: "w-[300px] mt-2 py-4 px-6 rounded-2xl text-slate-800" %>
+      <% @user.errors.full_messages_for(:avatar).each do |message| %>
+        <div class="px-6 py-4 mt-2 rounded-2xl bg-rose-300"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit 'Submit', class: "py-4 px-6 bg-[#5e8c75] hover:bg-[#3c5e4d] transition text-white rounded-2xl cursor-pointer" %>
+  </div>
+<% end %>
+

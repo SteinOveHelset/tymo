@@ -1,0 +1,5 @@
+<h1 class="mb-6 text-3xl text-[#989898]">Edit project</h1>
+
+<%= form_with model: @project, url: dashboard_project_path(@project), class: "space-y-4" do |form| %>
+    <%= render "form", form: form, project: @project %>
+<% end %>

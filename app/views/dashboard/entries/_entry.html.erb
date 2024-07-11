@@ -1,0 +1,33 @@
+<div class="grid grid-cols-10 gap-2">
+    <div class="col-span-7 py-4 px-6 grid grid-cols-5 gap-2 items-center bg-white rounded-tl-2xl rounded-bl-2xl">
+        <div class="col-span-3 flex items-center">
+            <span class="w-[15px] h-[15px] mr-6 <% if entry.client.color %>bg-<%= entry.client.color %>-300<% else %>bg-slate-300<% end %> rounded-full"></span>
+
+            <a href="<%= dashboard_entry_path(entry) %>">
+                <p class="font-bold"><%= entry.client.title %></p>
+                <span class="text-xs"><%= entry.project.title %></span>
+            </a>
+        </div>
+
+        <div class="col-span-2 text-right">
+            <strong><%= entry.start_time.strftime("%H:%M") %> - <%= entry.end_time.strftime("%H:%M") %></strong><br>
+            <span class="text-xs"><%= entry.start_time.strftime("%A") %></span>
+        </div>
+    </div>
+
+    <div class="col-span-1 py-4 px-6 bg-white flex flex-col justify-center items-center" title="<%= entry.created_by.email %>">
+        <a href="<%= dashboard_user_path(entry.created_by) %>">
+            <% if entry.created_by.avatar.attached? %>
+                <img src="<%= url_for(entry.created_by.avatar) %>" class="w-10 h-10 rounded-full">
+            <% else %>
+                <div class="w-10 h-10 rounded-full bg-slate-500 flex items-center justify-center text-white">
+                    <span class="text-xl"><%= entry.created_by.email[0] %></span>
+                </div>
+            <% end %>
+        </a>
+    </div>
+
+    <div class="col-span-2 py-4 px-6 bg-white rounded-tr-2xl rounded-br-2xl text-center flex flex-col justify-center">
+        <strong><%= formatted_minutes(entry.minutes) %></strong>
+    </div>
+</div>

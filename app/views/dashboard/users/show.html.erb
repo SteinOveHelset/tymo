@@ -1,0 +1,25 @@
+<div class="mt-4 mb-6 flex justify-between items-center">
+    <h1 class="flex flex-row items-center space-x-4 text-3xl text-[#989898]">
+        <% if @user.avatar.attached? %>
+            <img src="<%= url_for(@user.avatar) %>" class="w-12 h-12 rounded-full">
+        <% else %>
+            <div class="w-12 h-12 rounded-full bg-slate-500 flex items-center justify-center text-white">
+                <span class="text-xl"><%= @user.email[0] %></span>
+            </div>
+        <% end %>
+
+        <span><%= @user.email%></span>
+    </h1>
+</div>
+
+<hr class="my-8">
+
+<h2 class="mt-6 mb-2 text-xl font-bold">Time tracked</h2>
+
+<div class="space-y-4">
+    <% if @user.entries.any? %>
+        <%= render partial: "dashboard/entries/entry", collection: @user.entries.order(end_time: :desc) %>
+    <% else %>
+        <p>No entries found.</p>
+    <% end %>
+</div>

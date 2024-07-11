@@ -1,0 +1,28 @@
+<h1 class="mb-6 text-3xl text-[#989898]">Edit client</h1>
+
+<%= form_with model: @client, url: dashboard_client_path(@client), class: "space-y-4" do |form| %>
+    <div class="flex flex-col">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: "w-full mt-2 py-4 px-6 rounded-2xl" %>
+        <% @client.errors.full_messages_for(:title).each do |message| %>
+            <div class="px-6 py-4 mt-2 rounded-2xl bg-rose-300"><%= message %></div>
+        <% end %>
+    </div>
+
+    <div class="flex flex-col">
+        <%= form.label :description %>
+        <%= form.text_area :description, class: "w-full min-h-80 mt-2 py-4 px-6 rounded-2xl" %>
+        <% @client.errors.full_messages_for(:description).each do |message| %>
+            <div class="px-6 py-4 mt-2 rounded-2xl bg-rose-300"><%= message %></div>
+        <% end %>
+    </div>
+
+    <div class="flex flex-col">
+        <%= form.label :color %>
+        <%= form.text_field :color, class: "w-full mt-2 py-4 px-6 rounded-2xl" %>
+    </div>
+
+    <div>
+        <%= form.submit 'Submit', class: "py-4 px-6 bg-[#5e8c75] hover:bg-[#3c5e4d] transition cursor-pointer text-white rounded-2xl" %>
+    </div>
+<% end %> 

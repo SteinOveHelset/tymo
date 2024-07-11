@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  client: one
+  team: one
+  created_by: one
+
+two:
+  title: MyString
+  description: MyText
+  client: two
+  team: two
+  created_by: two

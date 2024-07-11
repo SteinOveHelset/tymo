@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team: one
+  client: one
+  project: one
+  description: MyText
+  start_time: 2024-07-09 08:40:24
+  end_time: 2024-07-09 08:40:24
+  minutes: 1
+  created_by: one
+
+two:
+  team: two
+  client: two
+  project: two
+  description: MyText
+  start_time: 2024-07-09 08:40:24
+  end_time: 2024-07-09 08:40:24
+  minutes: 1
+  created_by: two

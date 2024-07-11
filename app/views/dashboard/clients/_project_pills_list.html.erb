@@ -1,0 +1,19 @@
+<a href="<%= dashboard_project_path(project) %>" class="block">
+    <p class="mb-2 text-sm"><%= project.title %></p>
+
+    <div 
+        class="w-[<%= project.total_percentage %>%] min-w-[120px] py-3 px-6 flex flex-col text-sm rounded-full <%= project.pill_class %>"
+    >
+        <span class="font-bold">
+            <%= formatted_minutes(project.total_minutes) %>
+        </span>
+
+        <span class="text-xs">
+            <% if project.budget %>
+                of <%= project.budget %>h
+            <% else %>
+                no budget
+            <% end %>
+        </span>
+    </div>
+</a>

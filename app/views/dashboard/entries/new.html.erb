@@ -1,0 +1,7 @@
+<div class="mb-6 flex justify-between items-center">
+    <h1 class="text-3xl text-[#989898]">Track time</h1>
+</div>
+
+<%= form_with model: @entry, url: dashboard_entries_path, class: "space-y-4" do |form| %>
+    <%= render 'form', entry: @entry, form: form %>
+<% end %>

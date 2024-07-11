@@ -1,0 +1,35 @@
+<div class="flex flex-col space-y-2">
+    <%= form.label :project %>
+    <%= form.collection_select :project_id, @projects, :id, :title_plus_client, { prompt: 'Select a project' }, { class: 'py-4 px-6 rounded-2xl' } %>
+    <% @entry.errors.full_messages_for(:project).each do |message| %>
+        <div class="px-6 py-4 mt-2 rounded-2xl bg-rose-300"><%= message %></div>
+    <% end %>
+</div>
+
+<div class="flex flex-col space-y-2">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "w-full min-h-80 py-4 px-6 rounded-2xl" %>
+    <% @entry.errors.full_messages_for(:description).each do |message| %>
+        <div class="px-6 py-4 mt-2 rounded-2xl bg-rose-300"><%= message %></div>
+    <% end %>
+</div>
+
+<div class="space-y-2">
+    <p><%= form.label :start_time, "Start Time" %></p>
+    <%= form.datetime_select :start_time %>
+    <% @entry.errors.full_messages_for(:start_time).each do |message| %>
+        <div class="px-6 py-4 mt-2 rounded-2xl bg-rose-300"><%= message %></div>
+    <% end %>
+</div>
+
+<div class="space-y-2">
+    <p><%= form.label :end_time, "End Time" %></p>
+    <%= form.datetime_select :end_time %>
+    <% @entry.errors.full_messages_for(:end_time).each do |message| %>
+        <div class="px-6 py-4 mt-2 rounded-2xl bg-rose-300"><%= message %></div>
+    <% end %>
+</div>
+
+<div>
+    <%= form.submit 'Submit', class: "py-4 px-6 bg-[#5e8c75] hover:bg-[#3c5e4d] transition cursor-pointer text-white rounded-2xl" %>
+</div>

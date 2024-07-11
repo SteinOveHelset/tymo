@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tymo</title>
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body>
+    <% flash.each do |type, msg| %>
+      <div 
+        class="w-full max-w-md p-6 rounded-2xl fixed bottom-4 right-4 transition-all <% if type == 'notice' %>bg-emerald-400<% else %>bg-rose-600<% end %>"
+      >
+        <%= msg %>
+      </div>
+    <% end %>
+    
+    <nav class="w-[200px] h-full pt-8 flex flex-col items-center fixed left-0 top-0 rounded-tr-[30px] rounded-br-[30px] bg-[#12567c]">
+        <a href="/dashboard">
+          <figure class="mb-4">
+              <%= image_tag("logo.png", width: '80') %>
+          </figure>
+        </a>
+
+        <%= link_to "track time", new_dashboard_entry_path, class: "mt-6 px-6 py-4 inline-block bg-[#1a466a] hover:bg-[#0e3352] transition text-white rounded-2xl" %>
+
+        <%= link_to "entries", dashboard_entries_path, class: "mt-8 text-white #{'font-bold' if request.path.start_with?('/dashboard/entries')}" %>
+        <%= link_to "clients", dashboard_clients_path, class: "mt-8 text-white #{'font-bold' if request.path.start_with?('/dashboard/clients')} #{'font-bold' if request.path.start_with?('/dashboard/projects')}" %>
+        <%= link_to "teams", dashboard_teams_path, class: "mt-8 text-white #{'font-bold' if request.path.start_with?('/dashboard/teams')}" %>
+
+        <%= link_to "my profile", edit_dashboard_user_path(current_user), class: "fixed bottom-8 mt-8 text-white #{'font-bold' if request.path.start_with?('/dashboard/users')}" %>
+    </nav>
+
+    <main class="min-h-screen pl-[230px] pr-[30px] pt-[90px] pb-8 bg-[#f2f2f2]">
+        <%= yield %>
+    </main>
+  </body>
+</html>
